@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MoveShot : MonoBehaviour
 {
-    public Vector2 Speed = new Vector2(10, 10);
-    public Vector2 Direction = new Vector2(-1, 0);
+    [SerializeField] Vector2 Speed;
+    public Vector2 Direction = new Vector2(-1,0);
     public Vector2 Move;
     public Rigidbody2D rb2d;
     void Start()
