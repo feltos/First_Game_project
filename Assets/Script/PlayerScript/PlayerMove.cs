@@ -11,8 +11,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] bool IsTurnedRight = true;
     float horizontal = 0.0f;
     public Transform BulletPrefab;
-    [SerializeField]float shootingRate = 0.25f;
+    [SerializeField]float shootingRate;
     public bool IsGrounded;
+    const float WalkDeadZone = 0.1f;
+    
 
 
     private void awake()
@@ -31,7 +33,9 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+
         horizontal = Input.GetAxis("Horizontal");
+        rb2d.velocity = new Vector2(speed * horizontal, rb2d.velocity.y);
         /////////////////////FLIP THE PLAYER SPRITE/////////////////////
         if (horizontal > 0 && !IsTurnedRight)
         {
@@ -54,15 +58,16 @@ public class PlayerMove : MonoBehaviour
       
         if (Input.GetMouseButtonDown(0))
             Attack(false);
+           
     }
     void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(speed *horizontal, rb2d.velocity.y);
+        
     }
 
     public void Attack(bool isEnemy)
     {
-        
+        SoundEffects.Instance.PlayerShotSound();
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = mousePosition - transform.position;
@@ -77,15 +82,9 @@ public class PlayerMove : MonoBehaviour
         if (shot != null)
         {
             shot.isEnemyShot = isEnemy;
+            shot.Direction = direction.normalized;
+            Debug.Log("fire: "+ direction);
         }
-
-            
-        MoveShot move = shotTransform.gameObject.GetComponent<MoveShot>();
-        if (move != null)
-        {
-            move.Direction = direction.normalized;
-        }
-        
     }
 
     

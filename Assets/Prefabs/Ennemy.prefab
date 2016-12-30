@@ -23,7 +23,6 @@ GameObject:
   - 61: {fileID: 61000014200087166}
   - 50: {fileID: 50000012248777078}
   - 114: {fileID: 114000014194315006}
-  - 114: {fileID: 114000012865154230}
   m_Layer: 0
   m_Name: Ennemy
   m_TagString: Untagged
@@ -75,19 +74,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 4.53, y: 3.25}
---- !u!114 &114000012865154230
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014209778522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62f7b9b7772173a4fae5ceaac2e9a7fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 1
-  isEnemy: 1
 --- !u!114 &114000014194315006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,7 +87,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: {x: 10, y: 10}
   Direction: {x: -1, y: 0}
-  rb2d: {fileID: 0}
+  rb2d: {fileID: 50000012248777078}
+  PlayerCharacter: {fileID: 1000011936205350, guid: a6175044021a1f4428b6b56f1f344282,
+    type: 2}
+  enemy: {fileID: 1000014209778522}
+  hp: 2
+  smokeEffect: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
+    type: 2}
+  fireEffect: {fileID: 198000010434363728, guid: b7d4e067b0401f447a17eef68a0b3703,
+    type: 2}
+  isEnemy: 1
 --- !u!212 &212000012963039634
 SpriteRenderer:
   m_ObjectHideFlags: 1
