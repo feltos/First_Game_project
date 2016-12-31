@@ -44,13 +44,16 @@ public class MonsterMove : MonoBehaviour
             {
                 hp -= shot.damage;
 
-
+                
                 Destroy(shot.gameObject);
 
                 if (hp <= 0)
                 {
-                    Instantiate(fireEffect,transform.position,transform.rotation);
-                    Instantiate(smokeEffect,transform.position,transform.rotation);
+                    transform.Rotate(0, 0, 0);
+                    Instantiate(fireEffect,enemy.transform.position,enemy.transform.rotation);
+                    Instantiate(smokeEffect,enemy.transform.position,enemy.transform.rotation);
+                    Debug.Log("prout");
+                    SoundEffects.Instance.EnemyDied();
                     Destroy(gameObject);
                 }
             }

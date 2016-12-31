@@ -3,18 +3,22 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer PlayerSprite;
-    [SerializeField] Rigidbody2D rb2d;
+    [SerializeField]SpriteRenderer PlayerSprite;
+    [SerializeField]Rigidbody2D rb2d;
+    [SerializeField]Rigidbody2D ennemy;
     [SerializeField]float speed;
     [SerializeField]float jump;
-    [SerializeField] GameObject GroundCheck;
-    [SerializeField] bool IsTurnedRight = true;
+    [SerializeField]int health;
+    [SerializeField]GameObject GroundCheck;
+    [SerializeField]bool IsTurnedRight = true;
     float horizontal = 0.0f;
     public Transform BulletPrefab;
     [SerializeField]float shootingRate;
     public bool IsGrounded;
     const float WalkDeadZone = 0.1f;
-    
+    [SerializeField]ParticleSystem smokeEffect;
+    [SerializeField]ParticleSystem fireEffect;
+
 
 
     private void awake()
@@ -27,7 +31,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
 
-       
+
 
     }
 
@@ -55,14 +59,14 @@ public class PlayerMove : MonoBehaviour
         }
 
         ///////////////////FIRE/////////////////////////////
-      
+
         if (Input.GetMouseButtonDown(0))
             Attack(false);
-           
+
     }
     void FixedUpdate()
     {
-        
+
     }
 
     public void Attack(bool isEnemy)
@@ -74,20 +78,19 @@ public class PlayerMove : MonoBehaviour
 
         var shotTransform = Instantiate(BulletPrefab) as Transform;
 
-            
+
         shotTransform.position = transform.position;
 
-            
+
         ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
         if (shot != null)
         {
             shot.isEnemyShot = isEnemy;
             shot.Direction = direction.normalized;
-            Debug.Log("fire: "+ direction);
         }
     }
 
-    
+
 
     void Flip()
     {
@@ -99,5 +102,16 @@ public class PlayerMove : MonoBehaviour
 
         IsTurnedRight = !IsTurnedRight;
     }
-
+     void OnTriggerEnter2D(Collider2D collider)
+     {
+        if (health <= 0)
+        {
+         transform.Rotate(0, 0, 0);
+         Instantiate(fireEffect, rb2d.transform.position, rb2d.transform.rotation);
+         Instantiate(smokeEffect, rb2d.transform.position, rb2d.transform.rotation);
+         Debug.Log("prout");
+      //////NEED TO FIX THE DESTROY CAMERA PROBLEM !!!!!!!!! ///////////
+        Application.LoadLevel("GameOver");
+        }
+    }
 }

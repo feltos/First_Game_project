@@ -164,15 +164,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSprite: {fileID: 212000012877411816}
   rb2d: {fileID: 50000013977962048}
+  ennemy: {fileID: 0}
   speed: 8
   jump: 13
+  health: 10
   GroundCheck: {fileID: 1000011641633760}
   IsTurnedRight: 1
   BulletPrefab: {fileID: 4000013698025512, guid: 73a654ac825a52041aeb4fe723b1feb2,
     type: 2}
   shootingRate: 0.1
   IsGrounded: 0
-  PlayerAnim: {fileID: 95000011279905136}
+  smokeEffect: {fileID: 0}
+  fireEffect: {fileID: 0}
 --- !u!212 &212000012476874188
 SpriteRenderer:
   m_ObjectHideFlags: 1

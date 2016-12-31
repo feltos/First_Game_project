@@ -8,6 +8,8 @@ public class SoundEffects : MonoBehaviour
 
     public AudioClip explosionSound;
     public AudioClip playerShotSound;
+    public AudioClip EnemyExplode;
+    public AudioClip MenuMusic;
     
 
     void Awake()
@@ -29,6 +31,15 @@ public class SoundEffects : MonoBehaviour
         MakeSound(playerShotSound);
     }
 
+    public void EnemyDied()
+    {
+        MakeSound(EnemyExplode);
+    }
+
+    public void Menu()
+    {
+        MakeSound(MenuMusic);
+    }
     private void MakeSound(AudioClip originalClip)
     {
         AudioSource.PlayClipAtPoint(originalClip, transform.position);
