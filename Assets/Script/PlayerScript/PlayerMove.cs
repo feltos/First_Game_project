@@ -5,7 +5,6 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField]SpriteRenderer PlayerSprite;
     [SerializeField]Rigidbody2D rb2d;
-    [SerializeField]Rigidbody2D ennemy;
     [SerializeField]float speed;
     [SerializeField]float jump;
     [SerializeField]int health;
@@ -104,14 +103,20 @@ public class PlayerMove : MonoBehaviour
     }
      void OnTriggerEnter2D(Collider2D collider)
      {
+        
+        if(collider.gameObject.tag == "enemy")
+        {
+            health -= 1;
+        }
         if (health <= 0)
         {
+
          transform.Rotate(0, 0, 0);
-         Instantiate(fireEffect, rb2d.transform.position, rb2d.transform.rotation);
-         Instantiate(smokeEffect, rb2d.transform.position, rb2d.transform.rotation);
+         Instantiate(fireEffect, gameObject.transform.position, gameObject.transform.rotation);
+         Instantiate(smokeEffect, gameObject.transform.position, gameObject.transform.rotation);
          Debug.Log("prout");
       //////NEED TO FIX THE DESTROY CAMERA PROBLEM !!!!!!!!! ///////////
         Application.LoadLevel("GameOver");
         }
-    }
+      }
 }

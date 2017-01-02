@@ -22,9 +22,11 @@ public class menuScript : MonoBehaviour
           )
         )
         {
+            
             Application.LoadLevel("Main");
         }
     }
+ 
 }
 
 

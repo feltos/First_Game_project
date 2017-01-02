@@ -36,10 +36,6 @@ public class SoundEffects : MonoBehaviour
         MakeSound(EnemyExplode);
     }
 
-    public void Menu()
-    {
-        MakeSound(MenuMusic);
-    }
     private void MakeSound(AudioClip originalClip)
     {
         AudioSource.PlayClipAtPoint(originalClip, transform.position);

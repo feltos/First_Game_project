@@ -8,14 +8,15 @@ public class MonsterMove : MonoBehaviour
     private Vector2 Movement;
     public Rigidbody2D rb2d;
     [SerializeField]GameObject PlayerCharacter;
-    [SerializeField] GameObject enemy;
-    [SerializeField] int hp;
+    [SerializeField]GameObject enemy;
+    [SerializeField]int hp;
     [SerializeField]ParticleSystem smokeEffect;
     [SerializeField]ParticleSystem fireEffect;
     public bool isEnemy = true;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
     }
 	
 	void Update()
@@ -29,7 +30,6 @@ public class MonsterMove : MonoBehaviour
 
     void FixedUpdate()
     {
-       
        rb2d.velocity = Movement;
     }
     ////////////////////SHOOT ON ENEMY////////////////////////
@@ -49,10 +49,8 @@ public class MonsterMove : MonoBehaviour
 
                 if (hp <= 0)
                 {
-                    transform.Rotate(0, 0, 0);
-                    Instantiate(fireEffect,enemy.transform.position,enemy.transform.rotation);
-                    Instantiate(smokeEffect,enemy.transform.position,enemy.transform.rotation);
-                    Debug.Log("prout");
+                    Instantiate(fireEffect,gameObject.transform.position,gameObject.transform.rotation);
+                    Instantiate(smokeEffect,gameObject.transform.position,gameObject.transform.rotation);
                     SoundEffects.Instance.EnemyDied();
                     Destroy(gameObject);
                 }
