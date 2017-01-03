@@ -16,11 +16,12 @@ public class MonsterMove : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-
+        
     }
 	
 	void Update()
     {
+
         Direction = (PlayerCharacter.transform.position - transform.position).normalized;
         Movement = new Vector2(
             Speed.x * Direction.x,
@@ -49,7 +50,6 @@ public class MonsterMove : MonoBehaviour
 
                 if (hp <= 0)
                 {
-                    Instantiate(fireEffect,gameObject.transform.position,gameObject.transform.rotation);
                     Instantiate(smokeEffect,gameObject.transform.position,gameObject.transform.rotation);
                     SoundEffects.Instance.EnemyDied();
                     Destroy(gameObject);
