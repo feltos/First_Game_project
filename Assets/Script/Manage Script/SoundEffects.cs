@@ -6,7 +6,7 @@ public class SoundEffects : MonoBehaviour
 {
     public static SoundEffects Instance;
 
-    public AudioClip explosionSound;
+    public AudioClip DamageSound;
     public AudioClip playerShotSound;
     public AudioClip EnemyExplode;
     public AudioClip MenuMusic;
@@ -21,9 +21,9 @@ public class SoundEffects : MonoBehaviour
         Instance = this;
     }
 
-    public void ExplosionSound()
+    public void DamageHeroSound()
     {
-        MakeSound(explosionSound);
+        MakeSound(DamageSound);
     }
 
     public void PlayerShotSound()

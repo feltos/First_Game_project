@@ -118,7 +118,11 @@ MonoBehaviour:
   rb2d: {fileID: 50000012219210482}
   speed: 8
   jump: 13
-  health: 5
+  StartingHealth: 5
+  CurrentHealth: 0
+  HealthSlider: {fileID: 0}
+  DamageImage: {fileID: 0}
+  FlashColor: {r: 1, g: 0, b: 0, a: 0.1}
   GroundCheck: {fileID: 1000012314764460}
   IsTurnedRight: 1
   BulletPrefab: {fileID: 4000013698025512, guid: 73a654ac825a52041aeb4fe723b1feb2,
@@ -127,8 +131,7 @@ MonoBehaviour:
   IsGrounded: 0
   smokeEffect: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
     type: 2}
-  fireEffect: {fileID: 198000010434363728, guid: b7d4e067b0401f447a17eef68a0b3703,
-    type: 2}
+  fireEffect: {fileID: 0}
 --- !u!212 &212000012121961456
 SpriteRenderer:
   m_ObjectHideFlags: 1

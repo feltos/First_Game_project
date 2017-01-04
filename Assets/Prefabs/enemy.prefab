@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013146037352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.50594425, y: -4.953644, z: 0}
+  m_LocalPosition: {x: -12.472126, y: -2.293309, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -73,7 +73,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 4.53, y: 3.25}
+  m_Size: {x: 2.64, y: 2.45}
 --- !u!114 &114000011035580558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,8 +94,7 @@ MonoBehaviour:
   hp: 2
   smokeEffect: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
     type: 2}
-  fireEffect: {fileID: 198000010434363728, guid: b7d4e067b0401f447a17eef68a0b3703,
-    type: 2}
+  fireEffect: {fileID: 0}
   isEnemy: 1
 --- !u!212 &212000010435912430
 SpriteRenderer:

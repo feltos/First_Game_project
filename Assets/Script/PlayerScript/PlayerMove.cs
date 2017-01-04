@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerMove : MonoBehaviour
@@ -7,7 +8,14 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]Rigidbody2D rb2d;
     [SerializeField]float speed;
     [SerializeField]float jump;
-    [SerializeField]int health;
+    [SerializeField] int StartingHealth;
+    [SerializeField] int CurrentHealth;
+    [SerializeField]Slider HealthSlider;
+    [SerializeField]Image DamageImage;
+    private float FlashSpeed = 5f;
+    [SerializeField]Color FlashColor = new Color(1f, 0f, 0f, 0.1f);
+    float timer;
+    private float TimeBetweenAttack = 3f;
     [SerializeField]GameObject GroundCheck;
     [SerializeField]bool IsTurnedRight = true;
     float horizontal = 0.0f;
@@ -25,6 +33,7 @@ public class PlayerMove : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         PlayerSprite = GetComponent<SpriteRenderer>();
         Cursor.visible = true;
+        CurrentHealth = StartingHealth;
     }
 
     void Start()
@@ -36,7 +45,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-
+        timer += Time.deltaTime;
+        DamageImage.color = Color.Lerp(DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
         horizontal = Input.GetAxis("Horizontal");
         rb2d.velocity = new Vector2(speed * horizontal, rb2d.velocity.y);
         /////////////////////FLIP THE PLAYER SPRITE/////////////////////
@@ -104,19 +114,22 @@ public class PlayerMove : MonoBehaviour
      void OnTriggerEnter2D(Collider2D collider)
      {
         
-        if(collider.gameObject.tag == "enemy")
+        if(collider.gameObject.tag == "enemy" && timer >= TimeBetweenAttack)
         {
-            health -= 1;
+            DamageImage.color = FlashColor;
+            CurrentHealth -= 1;
+            HealthSlider.value = CurrentHealth;
+            timer = 0f;
         }
-        if (health <= 0)
+        
+        
+        if (CurrentHealth <= 0)
         {
 
          transform.Rotate(0, 0, 0);
-         Instantiate(fireEffect, gameObject.transform.position, gameObject.transform.rotation);
          Instantiate(smokeEffect, gameObject.transform.position, gameObject.transform.rotation);
-         Debug.Log("prout");
-      //////NEED TO FIX THE DESTROY CAMERA PROBLEM !!!!!!!!! ///////////
-        Application.LoadLevel("GameOver");
+         Application.LoadLevel("GameOver");
         }
-      }
+        
+    }
 }
