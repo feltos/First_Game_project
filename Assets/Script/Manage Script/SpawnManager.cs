@@ -4,13 +4,18 @@ using System.Collections;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]GameObject enemy;
-    [SerializeField]float SpawnTime;
-    public Transform[]SpawnPoints;
+    [SerializeField]GameObject Item;
+    [SerializeField]float EnemmySpawnTime;
+    [SerializeField]float ItemSpawnTime;
+    [SerializeField] Transform[]SpawnPoints;
+    [SerializeField]Transform[] ItemSpawnPoints;
+
+
    
-	
 	void Start ()
     {
-        InvokeRepeating("Spawn", SpawnTime, SpawnTime);
+        InvokeRepeating("EnemmySpawn", EnemmySpawnTime, EnemmySpawnTime);
+        InvokeRepeating("ItemSpawn", ItemSpawnTime, ItemSpawnTime);
 	}
 	
 	
@@ -19,9 +24,15 @@ public class SpawnManager : MonoBehaviour
 	
 	}
 
-    void Spawn()
+    void EnemmySpawn()
     {
         int SpawnPointIndex = Random.Range(0, SpawnPoints.Length);
         Instantiate(enemy, SpawnPoints[SpawnPointIndex].position, SpawnPoints[SpawnPointIndex].rotation);
+    }
+
+    void ItemSpawn()
+    {
+        int SpawnItemIndex = Random.Range(0, ItemSpawnPoints.Length);
+        Instantiate(Item, ItemSpawnPoints[SpawnItemIndex].position, ItemSpawnPoints[SpawnItemIndex].rotation);
     }
 }
