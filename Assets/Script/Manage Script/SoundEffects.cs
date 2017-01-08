@@ -11,6 +11,7 @@ public class SoundEffects : MonoBehaviour
     public AudioClip EnemyExplode;
     public AudioClip MenuMusic;
     
+    
 
     void Awake()
     {
@@ -19,7 +20,7 @@ public class SoundEffects : MonoBehaviour
             Debug.LogError("Multiple instances of SoundEffects!");
         }
         Instance = this;
-    }
+     }
 
     public void DamageHeroSound()
     {

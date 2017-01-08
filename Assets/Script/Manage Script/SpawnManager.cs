@@ -10,7 +10,29 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] Transform[]SpawnPoints;
     [SerializeField]Transform[] ItemSpawnPoints;
 
+    
+    enum Effects
+    {
+        HealthBonus,
+        DamageBonus,
+        InfiniteJump,
+        Shield,
+        HealthMalus,
+        NoJump,
+        NoShoot,
+        Length
+    };
 
+    double [] probabilities = 
+    {
+        5,
+        5,
+        2,
+        3,
+        1,
+        1,
+        1
+    };
    
 	void Start ()
     {

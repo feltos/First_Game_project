@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]GameObject GroundCheck;
     [SerializeField]bool IsTurnedRight = true;
     float horizontal = 0.0f;
-    public Transform BulletPrefab;
+    [SerializeField]Transform BulletPrefab;
     [SerializeField]float shootingRate;
     public bool IsGrounded;
     const float WalkDeadZone = 0.1f;
@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour
         PlayerSprite = GetComponent<SpriteRenderer>();
         Cursor.visible = true;
         CurrentHealth = StartingHealth;
+        Application.DontDestroyOnLoad(transform.gameObject);
     }
 
     void Start()

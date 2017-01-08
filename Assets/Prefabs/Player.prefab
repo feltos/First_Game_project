@@ -119,7 +119,7 @@ MonoBehaviour:
   speed: 8
   jump: 13
   StartingHealth: 5
-  CurrentHealth: 0
+  CurrentHealth: 5
   HealthSlider: {fileID: 0}
   DamageImage: {fileID: 0}
   FlashColor: {r: 1, g: 0, b: 0, a: 0.1}
