@@ -8,7 +8,7 @@ public class ShotScript : MonoBehaviour
     [SerializeField]Vector2 Speed;
     private Vector2 Move;
     public Vector2 Direction = new Vector2(-1, 0);
-    public Rigidbody2D rb2d;
+    [SerializeField] Rigidbody2D rb2d;
     
     void Start()
     {

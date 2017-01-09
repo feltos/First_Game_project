@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  isEnemyShot: 0
+  isEnemyShot: 1
   Speed: {x: 15, y: 15}
   Direction: {x: -1, y: 0}
   rb2d: {fileID: 50000010390268340}

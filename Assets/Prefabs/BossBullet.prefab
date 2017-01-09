@@ -21,11 +21,11 @@ GameObject:
   - 4: {fileID: 4000011387192384}
   - 212: {fileID: 212000011592858788}
   - 50: {fileID: 50000012673729310}
-  - 114: {fileID: 114000010925844792}
   - 58: {fileID: 58000013233223346}
+  - 114: {fileID: 114000013930297400}
   m_Layer: 0
   m_Name: BossBullet
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ CircleCollider2D:
   m_Offset: {x: -0.08, y: 0.25}
   serializedVersion: 2
   m_Radius: 0.63
---- !u!114 &114000010925844792
+--- !u!114 &114000013930297400
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -82,13 +82,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012997006266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0a33dff6437e742819339835ad5816, type: 3}
+  m_Script: {fileID: 11500000, guid: 1be931fdf5863044997e33a767eac687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  isEnemyShot: 0
-  Speed: {x: 15, y: 15}
-  Direction: {x: -1, y: 0}
+  Speed: {x: 10, y: 10}
+  Move: {x: 0, y: 0}
   rb2d: {fileID: 50000012673729310}
 --- !u!212 &212000011592858788
 SpriteRenderer:

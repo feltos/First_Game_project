@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cfba4500d5853e49b2c1792c412e4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: {x: 3, y: 3}
+  Speed: {x: 5, y: 5}
   Direction: {x: -1, y: 0}
   rb2d: {fileID: 50000011357684778}
   enemy: {fileID: 1000013146037352}

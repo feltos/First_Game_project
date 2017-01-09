@@ -20,11 +20,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]bool IsTurnedRight = true;
     float horizontal = 0.0f;
     [SerializeField]Transform BulletPrefab;
-    [SerializeField]float shootingRate;
     public bool IsGrounded;
     const float WalkDeadZone = 0.1f;
     [SerializeField]ParticleSystem smokeEffect;
-    [SerializeField]ParticleSystem fireEffect;
+    [SerializeField]GameObject PlayerGun;
+    
 
 
 
@@ -86,7 +86,7 @@ public class PlayerMove : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 direction = mousePosition - transform.position;
 
-        var shotTransform = Instantiate(BulletPrefab) as Transform;
+        var shotTransform = Instantiate(BulletPrefab,PlayerGun.transform.position,PlayerGun.transform.rotation) as Transform;
 
 
         shotTransform.position = transform.position;

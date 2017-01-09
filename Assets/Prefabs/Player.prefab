@@ -30,6 +30,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000011043978274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010189881688}
+  m_Layer: 0
+  m_Name: PlayerGun
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000012314764460
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +60,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4000010189881688
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011043978274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.96, y: 0.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000014128330002}
+  m_RootOrder: 1
 --- !u!4 &4000013183598730
 Transform:
   m_ObjectHideFlags: 1
@@ -65,11 +93,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010350229724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.26, y: -6.82, z: 0}
+  m_LocalPosition: {x: -9.79, y: -6.15, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013183598730}
+  - {fileID: 4000010189881688}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &50000012219210482
@@ -118,8 +147,8 @@ MonoBehaviour:
   rb2d: {fileID: 50000012219210482}
   speed: 8
   jump: 13
-  StartingHealth: 5
-  CurrentHealth: 5
+  StartingHealth: 10
+  CurrentHealth: 10
   HealthSlider: {fileID: 0}
   DamageImage: {fileID: 0}
   FlashColor: {r: 1, g: 0, b: 0, a: 0.1}
@@ -127,11 +156,10 @@ MonoBehaviour:
   IsTurnedRight: 1
   BulletPrefab: {fileID: 4000013698025512, guid: 73a654ac825a52041aeb4fe723b1feb2,
     type: 2}
-  shootingRate: 0.1
   IsGrounded: 0
   smokeEffect: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
     type: 2}
-  fireEffect: {fileID: 0}
+  PlayerGun: {fileID: 0}
 --- !u!212 &212000012121961456
 SpriteRenderer:
   m_ObjectHideFlags: 1

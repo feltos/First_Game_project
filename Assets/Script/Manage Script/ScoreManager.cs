@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
 	void Update ()
     {
         text.text = "Score : " + Score;
-        if(Score >= 10)
+        if(Score >= 300)
         {
             Application.LoadLevel("BossBattle");
         }

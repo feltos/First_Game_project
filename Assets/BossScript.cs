@@ -3,48 +3,60 @@ using System.Collections;
 
 public class BossScript : MonoBehaviour
 {
-    double Health = 500;
-    [SerializeField]Transform BossBullet;
-    private float ShootCooldown = 0.1f;
-    private bool CanFire = false;
+    double Health = 1;
+    [SerializeField]
+    Transform BossBullet;
+    private float ShootCooldown = 0.25f;
+    private float timer;
+    private GameObject Player;
+    [SerializeField]GameObject BossGun;
+    public bool isEnemy = true;
+
 
 
     void Awake()
     {
-
+        Player = GameObject.Find("Player");
     }
 
     void Start()
     {
-        ShootCooldown = 0f;
+
     }
 
 
     void Update()
     {
-        if (ShootCooldown > 0)
+        timer += Time.deltaTime;
+        if (Player != null && timer >= ShootCooldown)
         {
-            ShootCooldown -= Time.deltaTime;
+
+            Instantiate(BossBullet, BossGun.transform.position, BossGun.transform.rotation);
+            timer = 0f;
         }
+
+
     }
 
-    void Attack(bool isEnemy)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        var shotTransform = Instantiate(BossBullet) as Transform;
-        shotTransform.position = transform.position;
 
-        ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
+        ShotScript shot = collider.gameObject.GetComponent<ShotScript>();
         if (shot != null)
         {
-            shot.isEnemyShot = isEnemy;
-        }
-    }
-    void CanAttack()
-    {
-        if (ShootCooldown > Time.deltaTime)
-        {
-            CanFire = true;
-        }
 
+            if (shot.isEnemyShot != isEnemy)
+            {
+                Health -= shot.damage;
+                Destroy(shot.gameObject);
+            }
+            if (Health <= 0)
+            {
+              
+                Destroy(gameObject);
+            }
+        }
     }
 }
+
+        

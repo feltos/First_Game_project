@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]GameObject Item;
     [SerializeField]float EnemmySpawnTime;
     [SerializeField]float ItemSpawnTime;
-    [SerializeField] Transform[]SpawnPoints;
+    [SerializeField]Transform[]SpawnPoints;
     [SerializeField]Transform[] ItemSpawnPoints;
 
     
