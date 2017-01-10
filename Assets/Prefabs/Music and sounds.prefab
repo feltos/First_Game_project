@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979ec7028524a094fa0dbf04fcd7ae85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageSound: {fileID: 0}
+  DamageSound: {fileID: 8300000, guid: 24c06642b51bb404da295ae577bf67ee, type: 3}
   playerShotSound: {fileID: 8300000, guid: 54194ce9fa958224bafcce7e37b4c00c, type: 3}
   EnemyExplode: {fileID: 8300000, guid: 830c4a64a2a8c074194e4138cbe3681a, type: 3}
   MenuMusic: {fileID: 8300000, guid: bc74b3d7401202f4a9b1f89bea195b4a, type: 3}
+  bossShoot: {fileID: 0}

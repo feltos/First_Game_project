@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BossScript : MonoBehaviour
 {
-    double Health = 1;
+    [SerializeField]float Health;
     [SerializeField]
     Transform BossBullet;
-    private float ShootCooldown = 0.25f;
+    private float ShootCooldown = 0.35f;
     private float timer;
     private GameObject Player;
     [SerializeField]GameObject BossGun;
     public bool isEnemy = true;
+    [SerializeField]Slider BossHealthSlider;
 
 
 
@@ -30,7 +32,7 @@ public class BossScript : MonoBehaviour
         timer += Time.deltaTime;
         if (Player != null && timer >= ShootCooldown)
         {
-
+            SoundEffects.Instance.BossWeapon();
             Instantiate(BossBullet, BossGun.transform.position, BossGun.transform.rotation);
             timer = 0f;
         }
@@ -48,12 +50,16 @@ public class BossScript : MonoBehaviour
             if (shot.isEnemyShot != isEnemy)
             {
                 Health -= shot.damage;
+                BossHealthSlider.value = Health;
                 Destroy(shot.gameObject);
             }
             if (Health <= 0)
             {
-              
+
                 Destroy(gameObject);
+                Destroy(BossHealthSlider.gameObject);
+                
+
             }
         }
     }

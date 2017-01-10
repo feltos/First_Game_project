@@ -6,10 +6,12 @@ public class SoundEffects : MonoBehaviour
 {
     public static SoundEffects Instance;
 
-    public AudioClip DamageSound;
-    public AudioClip playerShotSound;
-    public AudioClip EnemyExplode;
-    public AudioClip MenuMusic;
+    [SerializeField]AudioClip DamageSound;
+    [SerializeField]AudioClip playerShotSound;
+    [SerializeField]AudioClip EnemyExplode;
+    [SerializeField]AudioClip MenuMusic;
+    [SerializeField]AudioClip bossShoot;
+    
     
     
 
@@ -35,6 +37,11 @@ public class SoundEffects : MonoBehaviour
     public void EnemyDied()
     {
         MakeSound(EnemyExplode);
+    }
+
+    public void BossWeapon()
+    {
+        MakeSound(bossShoot);
     }
 
     private void MakeSound(AudioClip originalClip)

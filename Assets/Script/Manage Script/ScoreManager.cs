@@ -5,11 +5,11 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour
 {
     public static int Score;
-    Text text;
-
+    Text ScoreText;
+    
     void Awake()
     {
-        text = GetComponent<Text>();
+        ScoreText = GetComponent<Text>();
         Score = 0;
     }
 
@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
 	
 	void Update ()
     {
-        text.text = "Score : " + Score;
+        ScoreText.text = "Score : " + Score;
         if(Score >= 300)
         {
             Application.LoadLevel("BossBattle");

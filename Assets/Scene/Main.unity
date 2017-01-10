@@ -939,6 +939,21 @@ Prefab:
       propertyPath: m_Name
       value: music
       objectReference: {fileID: 0}
+    - target: {fileID: 82000010711128388, guid: afd47ec74265e5642bcf7d821b396fa4,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014162694558, guid: afd47ec74265e5642bcf7d821b396fa4,
+        type: 2}
+      propertyPath: DamageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 24c06642b51bb404da295ae577bf67ee, type: 3}
+    - target: {fileID: 82000010711128388, guid: afd47ec74265e5642bcf7d821b396fa4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afd47ec74265e5642bcf7d821b396fa4, type: 2}
   m_IsPrefabParent: 0

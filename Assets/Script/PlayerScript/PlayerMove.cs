@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     const float WalkDeadZone = 0.1f;
     [SerializeField]ParticleSystem smokeEffect;
     [SerializeField]GameObject PlayerGun;
+    private bool tilt = false;
     
 
 
@@ -120,7 +121,9 @@ public class PlayerMove : MonoBehaviour
             DamageImage.color = FlashColor;
             CurrentHealth -= 1;
             HealthSlider.value = CurrentHealth;
+            SoundEffects.Instance.DamageHeroSound();
             timer = 0f;
+            
         }
         
         
