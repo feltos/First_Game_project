@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField]SpriteRenderer PlayerSprite;
+    SpriteRenderer PlayerSprite;
     [SerializeField]Rigidbody2D rb2d;
     [SerializeField]float speed;
     [SerializeField]float jump;
@@ -24,18 +24,21 @@ public class PlayerMove : MonoBehaviour
     const float WalkDeadZone = 0.1f;
     [SerializeField]ParticleSystem smokeEffect;
     [SerializeField]GameObject PlayerGun;
-    private bool tilt = false;
+    [SerializeField]BossLevelStart BossStart;
+    float ScoreToSwitch = 300;
+    
     
 
 
 
-    private void awake()
+    private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         PlayerSprite = GetComponent<SpriteRenderer>();
         Cursor.visible = true;
         CurrentHealth = StartingHealth;
-        Application.DontDestroyOnLoad(transform.gameObject);
+        
+        
     }
 
     void Start()
@@ -47,32 +50,36 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        DamageImage.color = Color.Lerp(DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
-        horizontal = Input.GetAxis("Horizontal");
-        rb2d.velocity = new Vector2(speed * horizontal, rb2d.velocity.y);
-        /////////////////////FLIP THE PLAYER SPRITE/////////////////////
-        if (horizontal > 0 && !IsTurnedRight)
+        if (ScoreManager.Score < ScoreToSwitch && (BossStart == null || !BossStart.teleporting))
         {
-            Flip();
+            timer += Time.deltaTime;
+            DamageImage.color = Color.Lerp(DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
+            horizontal = Input.GetAxis("Horizontal");
+            rb2d.velocity = new Vector2(speed * horizontal, rb2d.velocity.y);
+            /////////////////////FLIP THE PLAYER SPRITE/////////////////////
+            if (horizontal > 0 && !IsTurnedRight)
+            {
+                Flip();
+            }
+            else if (horizontal < 0 && IsTurnedRight)
+            {
+                Flip();
+            }
+            ///////////////////////JUMP/////////////////////////////
+            IsGrounded = Physics2D.Linecast(transform.position, GroundCheck.transform.position, 1 << LayerMask.NameToLayer("Ground"));
+
+
+            if (Input.GetButtonDown("Jump") && IsGrounded)
+            {
+                rb2d.velocity = rb2d.velocity + Vector2.up * jump;
+            }
+
+            ///////////////////FIRE/////////////////////////////
+
+            if (Input.GetMouseButtonDown(0))
+                Attack(false);
         }
-        else if (horizontal < 0 && IsTurnedRight)
-        {
-            Flip();
-        }
-        ///////////////////////JUMP/////////////////////////////
-        IsGrounded = Physics2D.Linecast(transform.position, GroundCheck.transform.position, 1 << LayerMask.NameToLayer("Ground"));
-
-
-        if (Input.GetButtonDown("Jump") && IsGrounded)
-        {
-            rb2d.velocity = rb2d.velocity + Vector2.up * jump;
-        }
-
-        ///////////////////FIRE/////////////////////////////
-
-        if (Input.GetMouseButtonDown(0))
-            Attack(false);
+        
 
     }
     void FixedUpdate()
@@ -136,4 +143,12 @@ public class PlayerMove : MonoBehaviour
         }
         
     }
+
+    public void Disappear()
+    {
+        Debug.Log("DISAPPEAR");
+        PlayerSprite.color = new Color(1, 1, 1, 0);
+        
+    }
+
 }

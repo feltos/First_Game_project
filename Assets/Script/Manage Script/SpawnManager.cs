@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]float ItemSpawnTime;
     [SerializeField]Transform[]SpawnPoints;
     [SerializeField]Transform[] ItemSpawnPoints;
-
+    
     
     enum Effects
     {
@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
         Length
     };
 
-    double [] probabilities = 
+    double [] probabilities = new double[(int)Effects.Length]
     {
         5,
         5,
@@ -48,13 +48,20 @@ public class SpawnManager : MonoBehaviour
 
     void EnemmySpawn()
     {
-        int SpawnPointIndex = Random.Range(0, SpawnPoints.Length);
-        Instantiate(enemy, SpawnPoints[SpawnPointIndex].position, SpawnPoints[SpawnPointIndex].rotation);
+        if (ScoreManager.Score < 300)
+        {
+            int SpawnPointIndex = Random.Range(0, SpawnPoints.Length);
+            Instantiate(enemy, SpawnPoints[SpawnPointIndex].position, SpawnPoints[SpawnPointIndex].rotation);
+        }
     }
 
     void ItemSpawn()
     {
-        int SpawnItemIndex = Random.Range(0, ItemSpawnPoints.Length);
-        Instantiate(Item, ItemSpawnPoints[SpawnItemIndex].position, ItemSpawnPoints[SpawnItemIndex].rotation);
+        if (ScoreManager.Score < 300)
+        {
+            int SpawnItemIndex = Random.Range(0, ItemSpawnPoints.Length);
+            Instantiate(Item, ItemSpawnPoints[SpawnItemIndex].position, ItemSpawnPoints[SpawnItemIndex].rotation);
+        }
     }
+
 }

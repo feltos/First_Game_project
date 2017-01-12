@@ -12,6 +12,8 @@ public class SoundEffects : MonoBehaviour
     [SerializeField]AudioClip MenuMusic;
     [SerializeField]AudioClip bossShoot;
     
+
+    
     
     
 
@@ -19,7 +21,7 @@ public class SoundEffects : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("Multiple instances of SoundEffects!");
+            Debug.Log("Multiple instances of SoundEffects!");
         }
         Instance = this;
      }

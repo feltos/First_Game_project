@@ -16,6 +16,7 @@ public class MonsterMove : MonoBehaviour
     public bool isEnemy = true;
     Transform Player;
     private GameObject Target;
+    float ScoreToSwitch = 300;
     
     void Awake()
     {
@@ -35,7 +36,11 @@ public class MonsterMove : MonoBehaviour
         Movement = new Vector2(
             Speed.x * Direction.x,
             Speed.y * Direction.y);
-        
+
+        if (ScoreManager.Score >= ScoreToSwitch)
+        {
+            Destroy(gameObject);
+        }
 
     }
 

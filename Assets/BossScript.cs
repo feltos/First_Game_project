@@ -4,15 +4,19 @@ using System.Collections;
 
 public class BossScript : MonoBehaviour
 {
-    [SerializeField]float Health;
+    [SerializeField]
+    float Health;
     [SerializeField]
     Transform BossBullet;
     private float ShootCooldown = 0.35f;
-    private float timer;
+    private float ShootTimer;
     private GameObject Player;
-    [SerializeField]GameObject BossGun;
+    [SerializeField]
+    GameObject BossGun;
     public bool isEnemy = true;
-    [SerializeField]Slider BossHealthSlider;
+    [SerializeField]
+    Slider BossHealthSlider;
+    [SerializeField]BossLevelStart BossStart;
 
 
 
@@ -29,12 +33,16 @@ public class BossScript : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (Player != null && timer >= ShootCooldown)
+        ShootTimer += Time.deltaTime;
+        if (Player != null && ShootTimer >= ShootCooldown)
         {
-            SoundEffects.Instance.BossWeapon();
-            Instantiate(BossBullet, BossGun.transform.position, BossGun.transform.rotation);
-            timer = 0f;
+            
+            if(!BossStart.teleporting)
+            {
+                SoundEffects.Instance.BossWeapon();
+                Instantiate(BossBullet, BossGun.transform.position, BossGun.transform.rotation);
+                ShootTimer = 0f;
+            }
         }
 
 
@@ -58,11 +66,11 @@ public class BossScript : MonoBehaviour
 
                 Destroy(gameObject);
                 Destroy(BossHealthSlider.gameObject);
-                
+
 
             }
         }
     }
 }
 
-        
+
