@@ -219,7 +219,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "Cr\xE9dits"
 --- !u!222 &242179377
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -564,6 +564,9 @@ MonoBehaviour:
   - {fileID: 253682869}
   - {fileID: 1015803534}
   - {fileID: 272564717}
+  Teleportation: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
+    type: 2}
+  Player: {fileID: 561041646}
 --- !u!4 &525458037
 Transform:
   m_ObjectHideFlags: 0
@@ -923,7 +926,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Start
 --- !u!222 &885474667
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -974,8 +977,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f88fc9c2f8d411f468b4183e0f8b6b25, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: dc37efb7af2dbcb458b698c4fe6f71fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -986,8 +989,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 966867672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.39, y: -0.02, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalPosition: {x: 4.22, y: 1.1, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1067,7 +1070,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1015803535}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 525458036}
+        m_MethodName: SwitchScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "Cr\xE9dits"
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1015803535
@@ -1283,7 +1297,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Quitter
 --- !u!222 &1633821420
 CanvasRenderer:
   m_ObjectHideFlags: 0
