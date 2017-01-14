@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class ScoreManager : MonoBehaviour
             if(timer < 0.0f)
             {
                 Score = 0;
-                Application.LoadLevel("BossBattle");
+                SceneManager.LoadScene("BossBattle");
             }
         }
            
