@@ -136,7 +136,7 @@ public class PlayerMove : MonoBehaviour
         
         if (CurrentHealth <= 0)
         {
-
+        
          transform.Rotate(0, 0, 0);
          Instantiate(smokeEffect, gameObject.transform.position, gameObject.transform.rotation);
          Application.LoadLevel("GameOver");
@@ -146,9 +146,16 @@ public class PlayerMove : MonoBehaviour
 
     public void Disappear()
     {
-        Debug.Log("DISAPPEAR");
+        
         PlayerSprite.color = new Color(1, 1, 1, 0);
         
+    }
+
+    public void Appear()
+    {
+        
+        PlayerSprite.color = new Color(1, 1, 1, 1);
+
     }
 
 }

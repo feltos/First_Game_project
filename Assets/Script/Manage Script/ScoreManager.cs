@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public static int Score;
     Text ScoreText;
     [SerializeField]GameObject player;
-    [SerializeField]ParticleSystem Teleportation;
+    [SerializeField]Animator Teleportation;
     float timer = 1f;
     bool Teleporting = false;
     [SerializeField]Rigidbody2D PlayerRb2d;

@@ -733,6 +733,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 212000012121961456, guid: a6175044021a1f4428b6b56f1f344282,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6175044021a1f4428b6b56f1f344282, type: 2}
   m_IsPrefabParent: 0
@@ -764,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae3770434684e149af5ee72fa79f78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportation: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
+  teleportation: {fileID: 95000013803954894, guid: 20fdfef0f29fb5749a4908243f4d3031,
     type: 2}
   Player: {fileID: 972133658}
   teleporting: 1

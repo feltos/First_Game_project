@@ -17,6 +17,9 @@ public class BossScript : MonoBehaviour
     [SerializeField]
     Slider BossHealthSlider;
     [SerializeField]BossLevelStart BossStart;
+    bool dying = false;
+    float Timer = 10f;
+    [SerializeField]Animator Explosion;
 
 
 
@@ -37,11 +40,16 @@ public class BossScript : MonoBehaviour
         if (Player != null && ShootTimer >= ShootCooldown)
         {
             
-            if(!BossStart.teleporting)
+            if(!BossStart.teleporting && !dying)
             {
                 SoundEffects.Instance.BossWeapon();
                 Instantiate(BossBullet, BossGun.transform.position, BossGun.transform.rotation);
                 ShootTimer = 0f;
+            }
+            if(dying)
+            {
+               Timer -= Time.deltaTime;
+               Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
             }
         }
 
@@ -63,9 +71,14 @@ public class BossScript : MonoBehaviour
             }
             if (Health <= 0)
             {
-
-                Destroy(gameObject);
+                dying = true;
                 Destroy(BossHealthSlider.gameObject);
+                if (Timer <= 0)
+                {
+                    Destroy(gameObject);
+                }
+                
+               
 
 
             }

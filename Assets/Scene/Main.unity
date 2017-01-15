@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 930198454}
-  Teleportation: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
+  Teleportation: {fileID: 95000013803954894, guid: 20fdfef0f29fb5749a4908243f4d3031,
     type: 2}
   PlayerRb2d: {fileID: 930198457}
 --- !u!114 &1696072520

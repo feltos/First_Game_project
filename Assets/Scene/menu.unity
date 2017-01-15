@@ -564,7 +564,7 @@ MonoBehaviour:
   - {fileID: 253682869}
   - {fileID: 1015803534}
   - {fileID: 272564717}
-  Teleportation: {fileID: 198000011342902680, guid: ec72f8c313155da4da3f553896873c25,
+  Teleportation: {fileID: 95000013803954894, guid: 20fdfef0f29fb5749a4908243f4d3031,
     type: 2}
   Player: {fileID: 561041646}
 --- !u!4 &525458037
@@ -802,7 +802,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &787001074
 Prefab:
   m_ObjectHideFlags: 0
@@ -840,7 +840,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012067373934, guid: f3c0e5353b028024da24cac65da3847c, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1000011256779420, guid: f3c0e5353b028024da24cac65da3847c, type: 2}
       propertyPath: m_Name
@@ -994,7 +994,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!1 &1015803532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1216,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012067373934, guid: f3c0e5353b028024da24cac65da3847c, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1000011256779420, guid: f3c0e5353b028024da24cac65da3847c, type: 2}
       propertyPath: m_Name

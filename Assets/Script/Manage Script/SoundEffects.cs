@@ -11,6 +11,7 @@ public class SoundEffects : MonoBehaviour
     [SerializeField]AudioClip EnemyExplode;
     [SerializeField]AudioClip MenuMusic;
     [SerializeField]AudioClip bossShoot;
+    [SerializeField]AudioClip TP;
     
 
     
@@ -44,6 +45,11 @@ public class SoundEffects : MonoBehaviour
     public void BossWeapon()
     {
         MakeSound(bossShoot);
+    }
+
+    public void Teleport()
+    {
+
     }
 
     private void MakeSound(AudioClip originalClip)
