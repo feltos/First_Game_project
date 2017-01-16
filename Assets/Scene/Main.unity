@@ -1038,7 +1038,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 75948e0a48b4d8f46afda5a57ec4cdbf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38e69d9283ca69a419a4997c8fa30a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1050,7 +1050,7 @@ Transform:
   m_GameObject: {fileID: 1226664524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.15, y: -0.45, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.28, z: 1}
+  m_LocalScale: {x: 3.7124996, y: 2.6571994, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1467,6 +1467,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1723551085}
+--- !u!1 &1767902384 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010654393516, guid: d9cac7944cbc1f549a9253e2f5769ab1,
+    type: 2}
+  m_PrefabInternal: {fileID: 102620795}
 --- !u!1 &1782535799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,7 +1596,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1767902384}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1855559156

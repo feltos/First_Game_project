@@ -23,12 +23,14 @@ public class PauseScript : MonoBehaviour
         {
             PauseUI.SetActive(true);
             Time.timeScale = 0;
+        
         }
 
         if(!Paused)
         {
             PauseUI.SetActive(false);
             Time.timeScale = 1;
+         
         }
         
     }

@@ -26,8 +26,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]GameObject PlayerGun;
     [SerializeField]BossLevelStart BossStart;
     float ScoreToSwitch = 300;
-    
-    
+
+    Vector2 direction;
 
 
 
@@ -79,9 +79,8 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
                 Attack(false);
         }
-        
-
     }
+
     void FixedUpdate()
     {
 
@@ -90,10 +89,19 @@ public class PlayerMove : MonoBehaviour
     public void Attack(bool isEnemy)
     {
         SoundEffects.Instance.PlayerShotSound();
-        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        Vector2 direction = mousePosition - transform.position;
 
+        if (Mathf.Abs(Input.GetAxis("RightJoystickX")) > WalkDeadZone || Mathf.Abs(Input.GetAxis("RightJoystickY")) > WalkDeadZone)
+        {
+            Vector3 firePosition = new Vector3(Input.GetAxis("RightJoystickX"), Input.GetAxis("RightJoystickY"));
+            firePosition = Camera.main.ScreenToWorldPoint(firePosition);
+            direction = firePosition - transform.position;
+        }
+        else
+        {
+            Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            direction = mousePosition - transform.position;
+        }
         var shotTransform = Instantiate(BulletPrefab,PlayerGun.transform.position,PlayerGun.transform.rotation) as Transform;
 
 

@@ -47,6 +47,7 @@ public class MonsterMove : MonoBehaviour
     void FixedUpdate()
     {
        rb2d.velocity = Movement;
+
     }
     ////////////////////SHOOT ON ENEMY////////////////////////
     void OnTriggerEnter2D(Collider2D collider)
@@ -65,10 +66,11 @@ public class MonsterMove : MonoBehaviour
 
                 if (hp <= 0)
                 {
-                    Instantiate(smokeEffect,gameObject.transform.position,gameObject.transform.rotation);
+                    Instantiate(smokeEffect, transform.position, transform.rotation);
                     SoundEffects.Instance.EnemyDied();
                     Destroy(gameObject);
                     ScoreManager.Score += KillPoints;
+                    
                 }
             }
         }
