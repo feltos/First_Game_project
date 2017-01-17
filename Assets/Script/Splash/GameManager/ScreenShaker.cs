@@ -8,10 +8,10 @@ using System.Collections;
     public class ScreenShaker : MonoBehaviour
     {
         public float time = -1.0f;
-        private float amplitude = 0.5f;
+        private float amplitude = 0.7f;
         private float decreaseFactor = 1.0f;
         private float freq = 7.0f;
-        private float ttl = 2.0f;
+        private float ttl = 2.5f;
         private bool verticalShake = true;
         private bool death = false;
         private int tension = 0;

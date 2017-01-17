@@ -49,7 +49,7 @@ public class SoundEffects : MonoBehaviour
 
     public void Teleport()
     {
-
+        MakeSound(TP);
     }
 
     private void MakeSound(AudioClip originalClip)

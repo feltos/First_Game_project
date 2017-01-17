@@ -12,6 +12,7 @@ public class BossLevelStart : MonoBehaviour
     [SerializeField]ScreenShaker CameraShake;
     [SerializeField]SoundEffects soundEffects;
     [SerializeField]AudioSource BossScream;
+   
     
     
 
@@ -19,6 +20,7 @@ public class BossLevelStart : MonoBehaviour
     {
         
         Instantiate(teleportation, Player.transform.position, Player.transform.rotation);
+        SoundEffects.Instance.Teleport();
         PlayerRb2d.gravityScale = 0;
         PlayerRb2d.velocity = Vector3.zero;
     }
@@ -31,6 +33,7 @@ public class BossLevelStart : MonoBehaviour
 
         if (teleporting)
         {
+            
             timer -= Time.deltaTime;
             if(timer < 4.3)
             {

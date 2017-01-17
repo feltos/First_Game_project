@@ -810,6 +810,11 @@ Prefab:
       propertyPath: m_Volume
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011542275168, guid: a6175044021a1f4428b6b56f1f344282,
+        type: 2}
+      propertyPath: TP
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ba01db478e72b3419cace4bba787097, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6175044021a1f4428b6b56f1f344282, type: 2}
   m_IsPrefabParent: 0
@@ -913,7 +918,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64eba5540dbdae749b588977f9ce5d0e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fc5a4273e45af214c9f7b7f445118b18, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

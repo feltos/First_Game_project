@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PressAnyKey : MonoBehaviour
 {
-
+    float timer = 1f;
 	
 	void Start ()
     {
@@ -15,7 +15,8 @@ public class PressAnyKey : MonoBehaviour
 	
 	void Update ()
     {
-	    if(Input.anyKeyDown)
+        timer -= Time.deltaTime;
+	    if(Input.anyKeyDown && timer <= 0)
         {
             SceneManager.LoadScene(0);
         }        

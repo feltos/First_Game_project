@@ -37,6 +37,7 @@ public class ScoreManager : MonoBehaviour
             
             Teleporting = true;
             Instantiate(Teleportation, player.transform.position, player.transform.rotation);
+            SoundEffects.Instance.Teleport();
             PlayerRb2d.gravityScale = 0;
             PlayerRb2d.velocity = Vector3.zero;
             player.GetComponent<PlayerMove>().Disappear();
