@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using InControl;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     float horizontal = 0.0f;
     [SerializeField]Transform BulletPrefab;
     public bool IsGrounded;
-    const float WalkDeadZone = 0.1f;
+    const float WalkDeadZone = 0.01f;
     [SerializeField]ParticleSystem smokeEffect;
     [SerializeField]GameObject PlayerGun;
     [SerializeField]BossLevelStart BossStart;
@@ -93,8 +95,10 @@ public class PlayerMove : MonoBehaviour
         if (Mathf.Abs(Input.GetAxis("RightJoystickX")) > WalkDeadZone || Mathf.Abs(Input.GetAxis("RightJoystickY")) > WalkDeadZone)
         {
             Vector3 firePosition = new Vector3(Input.GetAxis("RightJoystickX"), Input.GetAxis("RightJoystickY"));
-            firePosition = Camera.main.ScreenToWorldPoint(firePosition);
+
             direction = firePosition - transform.position;
+            Debug.Log(Input.GetAxis("RightJoystickX"));
+
         }
         else
         {
@@ -123,9 +127,6 @@ public class PlayerMove : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-
-        //m_SpriteRenderer.flipX = !m_SpriteRenderer.flipX;
-
         IsTurnedRight = !IsTurnedRight;
     }
      void OnTriggerEnter2D(Collider2D collider)
@@ -140,16 +141,24 @@ public class PlayerMove : MonoBehaviour
             timer = 0f;
             
         }
-        
-        
+
         if (CurrentHealth <= 0)
         {
         
          transform.Rotate(0, 0, 0);
-         Instantiate(smokeEffect, gameObject.transform.position, gameObject.transform.rotation);
-         Application.LoadLevel("GameOver");
+         SceneManager.LoadScene("GameOver");
         }
         
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "TheCube")
+        {
+            SceneManager.LoadScene("Victory");
+        }
+            
+
     }
 
     public void Disappear()
@@ -161,7 +170,7 @@ public class PlayerMove : MonoBehaviour
 
     public void Appear()
     {
-        
+
         PlayerSprite.color = new Color(1, 1, 1, 1);
 
     }

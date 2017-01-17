@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - Ground
+  - TheCube
   layers:
   - Default
   - TransparentFX

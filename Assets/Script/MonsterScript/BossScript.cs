@@ -18,10 +18,12 @@ public class BossScript : MonoBehaviour
     Slider BossHealthSlider;
     [SerializeField]BossLevelStart BossStart;
     bool dying = false;
-    float Timer = 5f;
+    float Timer = 4f;
     [SerializeField]ParticleSystem Explosion;
     [SerializeField]float ExplosionTime = 0.2f;
     [SerializeField]Transform[] ExplosionPoints;
+    [SerializeField]Collider2D BossCollider;
+    [SerializeField]GameObject TheCube;
 
 
 
@@ -49,12 +51,18 @@ public class BossScript : MonoBehaviour
                 SoundEffects.Instance.BossWeapon();
                 Instantiate(BossBullet, BossGun.transform.position, BossGun.transform.rotation);
                 ShootTimer = 0f;
-                InvokeRepeating("BossDying", ExplosionTime, ExplosionTime);
-            }
+                }
+
             if(dying)
             {
                Timer -= Time.deltaTime;
-               Instantiate(Explosion, gameObject.transform.position, gameObject.transform.rotation);
+                
+                if (Timer <= 0)
+                {
+                    Instantiate(TheCube, BossGun.transform.position, BossGun.transform.rotation);
+                    Destroy(gameObject);
+                    dying = false;
+                }
             }
         }
 
@@ -77,24 +85,22 @@ public class BossScript : MonoBehaviour
             if (Health <= 0)
             {
                 dying = true;
+                InvokeRepeating("BossDying", ExplosionTime, ExplosionTime);
                 Destroy(BossHealthSlider.gameObject);
-                BossDying();
-                if (Timer <= 0)
-                {
-                    Destroy(gameObject);
-                }
-                
-               
-
-
+                BossCollider.enabled = false;
             }
         }
     }
 
     void BossDying()
     {
-        int ExplosionPointsIndex = Random.Range(0, ExplosionPoints.Length);
-        Instantiate(Explosion, ExplosionPoints[ExplosionPointsIndex].position, ExplosionPoints[ExplosionPointsIndex].rotation);
+        if (dying)
+        {
+            int ExplosionPointsIndex = Random.Range(0, ExplosionPoints.Length);
+            Instantiate(Explosion, ExplosionPoints[ExplosionPointsIndex].position, ExplosionPoints[ExplosionPointsIndex].rotation);
+            SoundEffects.Instance.EnemyDied();
+        }
+        
     }
 }
 

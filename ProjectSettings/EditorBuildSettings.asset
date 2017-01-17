@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/Scene/GameOver.unity
   - enabled: 1
     path: "Assets/Scene/Cr\xE9dits.unity"
+  - enabled: 1
+    path: Assets/Scene/Victory.unity

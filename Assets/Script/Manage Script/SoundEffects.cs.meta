@@ -1,12 +1,16 @@
 fileFormatVersion: 2
 guid: 979ec7028524a094fa0dbf04fcd7ae85
-timeCreated: 1483049074
+timeCreated: 1484679368
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - explosionSound: {instanceID: 0}
+  - DamageSound: {fileID: 8300000, guid: 24c06642b51bb404da295ae577bf67ee, type: 3}
   - playerShotSound: {fileID: 8300000, guid: 54194ce9fa958224bafcce7e37b4c00c, type: 3}
+  - EnemyExplode: {fileID: 8300000, guid: 830c4a64a2a8c074194e4138cbe3681a, type: 3}
+  - MenuMusic: {fileID: 8300000, guid: 4b9f5feca29be1a4ab4abf13f32ed9b3, type: 3}
+  - bossShoot: {fileID: 8300000, guid: a06c7f47daec9a842be002a838fe0b07, type: 3}
+  - TP: {fileID: 8300000, guid: 2ba01db478e72b3419cace4bba787097, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
