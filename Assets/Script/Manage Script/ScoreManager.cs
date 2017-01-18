@@ -41,6 +41,7 @@ public class ScoreManager : MonoBehaviour
             PlayerRb2d.gravityScale = 0;
             PlayerRb2d.velocity = Vector3.zero;
             player.GetComponent<PlayerMove>().Disappear();
+            SoundEffects.Instance.Teleport();
         }
         if (Teleporting)
         {

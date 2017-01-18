@@ -8,8 +8,8 @@ public class CameraController : MonoBehaviour
     private Vector3 offset;
     float minPosX = -12f;
     float maxPosX = 13f;
-    float minPosY = -5f;
-    float maxPosY = 5f;
+    float minPosY = -4.7f;
+    float maxPosY = 4.7f;
     
     void Start()
     {

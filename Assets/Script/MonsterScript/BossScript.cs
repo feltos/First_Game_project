@@ -4,18 +4,14 @@ using System.Collections;
 
 public class BossScript : MonoBehaviour
 {
-    [SerializeField]
-    float Health;
-    [SerializeField]
-    Transform BossBullet;
+    [SerializeField]float Health;
+    [SerializeField]Transform BossBullet;
     private float ShootCooldown = 0.35f;
     private float ShootTimer;
     private GameObject Player;
-    [SerializeField]
-    GameObject BossGun;
+    [SerializeField]GameObject BossGun;
     public bool isEnemy = true;
-    [SerializeField]
-    Slider BossHealthSlider;
+    [SerializeField]Slider BossHealthSlider;
     [SerializeField]BossLevelStart BossStart;
     bool dying = false;
     float Timer = 4f;
@@ -24,7 +20,14 @@ public class BossScript : MonoBehaviour
     [SerializeField]Transform[] ExplosionPoints;
     [SerializeField]Collider2D BossCollider;
     [SerializeField]GameObject TheCube;
-
+    [SerializeField]SpriteRenderer fadeRenderer;
+    [SerializeField]Sprite BossDamageState;
+    [SerializeField]Sprite BossNormalState;
+    float FadeOutPeriod = 2.0f;
+    float FadeInPeriod = 1.8f;
+    float CubeSpawn = 0.5f;
+    float currentBlinkTimer;
+    [SerializeField]float BlinkTimer = 0.1f;
 
 
 
@@ -36,13 +39,14 @@ public class BossScript : MonoBehaviour
 
     void Start()
     {
-
+        currentBlinkTimer = BlinkTimer;
     }
 
 
     void Update()
     {
         ShootTimer += Time.deltaTime;
+        BlinkManager();
         if (Player != null && ShootTimer >= ShootCooldown)
         {
             
@@ -57,11 +61,34 @@ public class BossScript : MonoBehaviour
             {
                Timer -= Time.deltaTime;
                 
+
+                if (Timer <= FadeInPeriod)
+                {
+                    fadeRenderer.color = new Color(1.0f, 1.0f, 1.0f,
+                    fadeRenderer.color.a - 1.0f / FadeInPeriod * Time.deltaTime);
+                    Destroy(GetComponent<SpriteRenderer>());
+
+                }
+
+                else
+                {
+                    fadeRenderer.color = new Color(1.0f, 1.0f, 1.0f,
+                    fadeRenderer.color.a + 1.0f / FadeOutPeriod * Time.deltaTime);
+                    
+                    if (fadeRenderer.color.a > 1.0)
+                    {
+                        
+                        fadeRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    }
+                }
+               
+                
                 if (Timer <= 0)
                 {
-                    Instantiate(TheCube, BossGun.transform.position, BossGun.transform.rotation);
-                    Destroy(gameObject);
                     dying = false;
+                    Destroy(gameObject);
+                    Instantiate(TheCube, BossGun.transform.position, BossGun.transform.rotation);
+
                 }
             }
         }
@@ -80,6 +107,8 @@ public class BossScript : MonoBehaviour
             {
                 Health -= shot.damage;
                 BossHealthSlider.value = Health;
+                GetComponent<SpriteRenderer>().sprite = BossDamageState;
+
                 Destroy(shot.gameObject);
             }
             if (Health <= 0)
@@ -88,19 +117,34 @@ public class BossScript : MonoBehaviour
                 InvokeRepeating("BossDying", ExplosionTime, ExplosionTime);
                 Destroy(BossHealthSlider.gameObject);
                 BossCollider.enabled = false;
+               
+
             }
         }
     }
 
     void BossDying()
     {
-        if (dying)
+        if (dying && Timer > FadeInPeriod)
         {
             int ExplosionPointsIndex = Random.Range(0, ExplosionPoints.Length);
             Instantiate(Explosion, ExplosionPoints[ExplosionPointsIndex].position, ExplosionPoints[ExplosionPointsIndex].rotation);
             SoundEffects.Instance.EnemyDied();
         }
         
+    }
+    void BlinkManager()
+    {
+        if (GetComponent<SpriteRenderer>().sprite == BossDamageState)
+        {
+            currentBlinkTimer -= Time.deltaTime;
+            if (currentBlinkTimer <= 0)
+            {
+                GetComponent<SpriteRenderer>().sprite = BossNormalState;
+                currentBlinkTimer = BlinkTimer;
+            }
+        }
+
     }
 }
 
