@@ -576,7 +576,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: "Programmer : Guillaume Volgyesi \nArtiste : Manon Vuillemin\n\nMusique
+  m_Text: "Programmer : Guillaume Volgyesi \nArtiste : Manon Vulliemin\n\nMusique
     utilis\xE9es :\nAudionautix.com\n\nBruitages utilis\xE9s :\nFreesound.org\n\n "
 --- !u!222 &1611075316
 CanvasRenderer:

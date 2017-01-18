@@ -16,8 +16,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]Image DamageImage;
     private float FlashSpeed = 5f;
     [SerializeField]Color FlashColor = new Color(1f, 0f, 0f, 0.1f);
-    float timer;
-    private float TimeBetweenAttack = 3f;
+    float timeBetweenDamage;
+    float PeriodBetweenShoot = 0.2f;
+    float timeBetweenShoot = 0.2f;
+    private float PeriodBetweenDamage = 3f;
     [SerializeField]GameObject GroundCheck;
     [SerializeField]bool IsTurnedRight = true;
     float horizontal = 0.0f;
@@ -54,7 +56,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (ScoreManager.Score < ScoreToSwitch && (BossStart == null || !BossStart.teleporting))
         {
-            timer += Time.deltaTime;
+            timeBetweenDamage += Time.deltaTime;
+            timeBetweenShoot += Time.deltaTime;
             DamageImage.color = Color.Lerp(DamageImage.color, Color.clear, FlashSpeed * Time.deltaTime);
             horizontal = Input.GetAxis("Horizontal");
             rb2d.velocity = new Vector2(speed * horizontal, rb2d.velocity.y);
@@ -77,8 +80,6 @@ public class PlayerMove : MonoBehaviour
             }
 
             ///////////////////FIRE/////////////////////////////
-
-            if (Input.GetMouseButtonDown(0))
                 Attack(false);
         }
     }
@@ -90,22 +91,33 @@ public class PlayerMove : MonoBehaviour
 
     public void Attack(bool isEnemy)
     {
-        SoundEffects.Instance.PlayerShotSound();
 
-        if (Mathf.Abs(Input.GetAxis("RightJoystickX")) > WalkDeadZone || Mathf.Abs(Input.GetAxis("RightJoystickY")) > WalkDeadZone)
+        var inputDevice = (InputManager.Devices.Count > 0) ? InputManager.Devices[0] : null;
+
+        if (inputDevice!= null && timeBetweenShoot > PeriodBetweenShoot &&
+            (Mathf.Abs(inputDevice.RightStick.X) > WalkDeadZone || Mathf.Abs(inputDevice.RightStick.Y) > WalkDeadZone))
         {
-            Vector3 firePosition = new Vector3(Input.GetAxis("RightJoystickX"), Input.GetAxis("RightJoystickY"));
-
-            direction = firePosition - transform.position;
-            Debug.Log(Input.GetAxis("RightJoystickX"));
+            direction = new Vector3(inputDevice.RightStick.X, inputDevice.RightStick.Y);
+            timeBetweenShoot = 0;
+          
+            
 
         }
-        else
+        else if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             direction = mousePosition - transform.position;
         }
+        else
+        {
+            return;
+        }
+        
+           
+        
+        
+        SoundEffects.Instance.PlayerShotSound();
         var shotTransform = Instantiate(BulletPrefab,PlayerGun.transform.position,PlayerGun.transform.rotation) as Transform;
 
 
@@ -132,13 +144,13 @@ public class PlayerMove : MonoBehaviour
      void OnTriggerEnter2D(Collider2D collider)
      {
         
-        if(collider.gameObject.tag == "enemy" && timer >= TimeBetweenAttack)
+        if(collider.gameObject.tag == "enemy" && timeBetweenDamage >= PeriodBetweenDamage)
         {
             DamageImage.color = FlashColor;
             CurrentHealth -= 1;
             HealthSlider.value = CurrentHealth;
             SoundEffects.Instance.DamageHeroSound();
-            timer = 0f;
+            timeBetweenDamage = 0f;
             
         }
 
