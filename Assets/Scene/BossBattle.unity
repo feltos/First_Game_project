@@ -747,7 +747,7 @@ MonoBehaviour:
   BossCollider: {fileID: 1567163120}
   TheCube: {fileID: 1000011434364312, guid: ed1d70e5b918a204881ee560572bd4d9, type: 2}
   fadeRenderer: {fileID: 1644012582}
-  BossDamageState: {fileID: 21300000, guid: 432cf9d435f10d740ad2e7aa19083f07, type: 3}
+  BossDamageState: {fileID: 21300000, guid: 074e89da06d42c6479a63718397eb1ee, type: 3}
   BossNormalState: {fileID: 21300000, guid: dc37efb7af2dbcb458b698c4fe6f71fb, type: 3}
   BlinkTimer: 0.1
 --- !u!1001 &1593560627
