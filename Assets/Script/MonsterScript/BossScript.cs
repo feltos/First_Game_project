@@ -135,16 +135,20 @@ public class BossScript : MonoBehaviour
     }
     void BlinkManager()
     {
-        if (GetComponent<SpriteRenderer>().sprite == BossDamageState)
+        if (!dying)
         {
-            currentBlinkTimer -= Time.deltaTime;
-            if (currentBlinkTimer <= 0)
+            if (GetComponent<SpriteRenderer>().sprite == BossDamageState)
             {
-                GetComponent<SpriteRenderer>().sprite = BossNormalState;
-                currentBlinkTimer = BlinkTimer;
+                currentBlinkTimer -= Time.deltaTime;
+                if (currentBlinkTimer <= 0)
+                {
+                    GetComponent<SpriteRenderer>().sprite = BossNormalState;
+                    currentBlinkTimer = BlinkTimer;
+                }
             }
         }
 
+    
     }
 }
 
